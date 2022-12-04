@@ -1,0 +1,28 @@
+@mixin labelText {
+	padding: 5px 10px 5px 10px;
+	font-size: 24px;
+	color: $sec-color;
+}
+
+@mixin inputValue {
+	padding: 5px;
+	margin-left: 10px;
+	margin-right: 10px;
+	border-radius: 4px;
+	font-size: 20px;
+	color: $sec-color;
+	background-color: $white-transparent;
+}
+
+@mixin buttonsValue {
+	margin: 0px 5px;
+	padding: 5px 10px;
+	font-size: 20px;
+	border: 2px solid transparent;
+	border-radius: 8px;
+	color: $sec-color;
+	background-color: $background-color;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: background-color 0.3;
+}

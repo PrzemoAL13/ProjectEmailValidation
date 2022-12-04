@@ -1,0 +1,83 @@
+@import "./colors";
+@import "./mixims";
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin-top: 100px;
+
+	background-color: $background-color;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	width: 500px;
+	border: 1px solid black;
+	background-color: $main-color;
+	border-radius: 8px;
+	box-shadow: 5px 5px 5px black;
+
+	&__title {
+		padding: 10px;
+		text-align: center;
+		font-size: 36px;
+		color: $sec-color;
+	}
+
+	&__name {
+		@include labelText;
+	}
+
+	&__name-input {
+		@include inputValue;
+	}
+
+	&__password {
+		@include labelText;
+	}
+
+	&__password-input {
+		@include inputValue;
+	}
+	&__password-again {
+		@include labelText;
+	}
+
+	&__password-again-input {
+		@include inputValue;
+	}
+	&__email {
+		@include labelText;
+	}
+
+	&__email-input {
+		@include inputValue;
+	}
+
+	&__btns {
+		display: flex;
+		justify-content: flex-end;
+		margin: 20px 5px 20px 0px;
+
+		&__btn {
+			@include buttonsValue;
+		}
+
+		&__btn:hover {
+			border: 2px solid $background-color;
+			color: $background-color;
+			background-color: $sec-color;
+		}
+	}
+}
