@@ -29,40 +29,31 @@ body {
 	box-shadow: 5px 5px 5px black;
 
 	&__title {
+		@include h1Title;
+	}
+
+	&__container {
+		display: flex;
+		justify-content: center;
+		align-items: left;
+		flex-direction: column;
 		padding: 10px;
-		text-align: center;
-		font-size: 36px;
-		color: $sec-color;
+
+		&__text {
+			@include labelText;
+		}
+
+		&__text-input {
+			@include inputValue;
+		}
+
+		&__error {
+			@include pError;
+		}
 	}
 
-	&__name {
-		@include labelText;
-	}
-
-	&__name-input {
-		@include inputValue;
-	}
-
-	&__password {
-		@include labelText;
-	}
-
-	&__password-input {
-		@include inputValue;
-	}
-	&__password-again {
-		@include labelText;
-	}
-
-	&__password-again-input {
-		@include inputValue;
-	}
-	&__email {
-		@include labelText;
-	}
-
-	&__email-input {
-		@include inputValue;
+	.container-error {
+		border: 2px solid $error-color;
 	}
 
 	&__btns {
@@ -80,4 +71,29 @@ body {
 			background-color: $sec-color;
 		}
 	}
+
+	&__popup {
+		@include popupWindow;
+
+		&__info {
+			padding: 10px;
+			font-size: 30px;
+			color: $sec-color;
+		}
+
+		&__btn {
+			@include buttonsValue;
+			border: 1px solid $sec-color;
+		}
+
+		&__btn:hover {
+			border: 2px solid $background-color;
+			color: $background-color;
+			background-color: $sec-color;
+		}
+	}
+}
+
+.show-popup {
+	top: 150px;
 }

@@ -1,17 +1,28 @@
+@mixin h1Title {
+	padding: 10px;
+	text-align: center;
+	font-size: 36px;
+	color: $sec-color;
+}
+
 @mixin labelText {
-	padding: 5px 10px 5px 10px;
 	font-size: 24px;
 	color: $sec-color;
 }
 
 @mixin inputValue {
+	margin-top: 5px;
 	padding: 5px;
-	margin-left: 10px;
-	margin-right: 10px;
 	border-radius: 4px;
 	font-size: 20px;
 	color: $sec-color;
 	background-color: $white-transparent;
+}
+
+@mixin pError {
+	font-size: 16px;
+	color: $error-color;
+	visibility: hidden;
 }
 
 @mixin buttonsValue {
@@ -25,4 +36,21 @@
 	text-transform: uppercase;
 	cursor: pointer;
 	transition: background-color 0.3;
+}
+
+@mixin popupWindow {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	position: absolute;
+	top: -400px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 600px;
+	height: 200px;
+	background-color: $pure-white;
+	border-radius: 8px;
+	border: 2px solid $pure-black;
+	transition: top 0.5s;
 }
