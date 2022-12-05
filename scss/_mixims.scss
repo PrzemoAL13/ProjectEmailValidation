@@ -22,7 +22,7 @@
 @mixin pError {
 	font-size: 16px;
 	color: $error-color;
-	visibility: hidden;
+	visibility:hidden;
 }
 
 @mixin buttonsValue {
