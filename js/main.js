@@ -5,6 +5,8 @@ let inputEmail;
 let buttonClear;
 let buttonSend;
 let buttonClose;
+let elementsWithError;
+let popupWindow;
 
 const minUserNameChars = 4;
 const maxUserNameChars = 20;
@@ -13,7 +15,7 @@ const minPassworChars = 8;
 const msgErrorEmptyField = " contains empty field!";
 const msgErrorMinChars = " is to short!";
 const msgErrorMaxChars = " is to long!";
-const msgErrorPassword = " nie pasują do siebie!";
+const msgErrorPassword = " - wrong password!";
 const msgErrorEmail = " jest nie poprawny!";
 
 const prepareDOMElements = () => {
@@ -24,6 +26,7 @@ const prepareDOMElements = () => {
 	buttonClear = document.querySelector(".clear");
 	buttonSend = document.querySelector(".send");
 	buttonClose = document.querySelector(".close");
+	popupWindow = document.querySelector(".form__popup");
 };
 
 const prepareDOMEvents = () => {
@@ -43,6 +46,13 @@ const prepareDOMEvents = () => {
 		checkLengthMin(inputPassword, minPassworChars, msgErrorMinChars);
 		checkPassword(inputPassword, inputPassword2, msgErrorPassword);
 		checkEmail(inputEmail, msgErrorEmail);
+		errorElementsCheck();
+	});
+
+	buttonClose.addEventListener("click", e => {
+		e.preventDefault();
+		clearForm([inputName, inputPassword, inputPassword2, inputEmail]);
+		popupWindow.classList.remove("show-popup");
 	});
 };
 
@@ -72,8 +82,13 @@ const showErrorInfo = (inputValue, msgValue) => {
 const checkFormInputEmpty = (inputValue, msgErrorValue) => {
 	inputValue.forEach(element => {
 		if (element.value === "") {
+			console.log("blad");
+			console.log(element.value);
+			console.log(element);
+			console.log(msgErrorValue);
 			showErrorInfo(element, msgErrorValue);
 		} else {
+			console.log(element.value);
 			clearError(inputValue);
 		}
 	});
@@ -100,11 +115,25 @@ const checkPassword = (inputValue, inputValue2, msgErrorValue) => {
 const checkEmail = (inputValue, msgErrorValue) => {
 	const regExpValue =
 		/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-	if (inputValue.value.length > 1) {
+	if (inputValue.value.length >= 1) {
 		if (regExpValue.test(inputValue.value)) {
 		} else {
 			showErrorInfo(inputValue, msgErrorValue);
 		}
+	}
+};
+
+const errorElementsCheck = () => {
+	elementsWithError = document.querySelectorAll(".container-error");
+	let localCnt = 0;
+	elementsWithError.forEach(el => {
+		if ((el.style.contains = ".container-error")) {
+			localCnt++;
+		}
+	});
+	console.log(localCnt);
+	if (localCnt === 0) {
+		popupWindow.classList.add("show-popup");
 	}
 };
 
